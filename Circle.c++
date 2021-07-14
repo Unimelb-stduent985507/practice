@@ -10,7 +10,7 @@ struct Point{
             m_x = x;
             m_y = y;
         }
-    private:
+    public:
         int m_x;
         int m_y;
 };
@@ -21,11 +21,18 @@ class Circle{
             m_p = p;
             m_radiux = radiux;
         }
-        double circum(){
-            return (2*PI*m_radiux);
-        }
-        double surface(){
-            return (PI*m_radiux*m_radiux);
+        void relation(Point p){
+            double s1 = m_radiux * m_radiux;
+            double s2 = (m_p.m_x-p.m_x)*(m_p.m_x-p.m_x) + (m_p.m_y-p.m_y)*(m_p.m_y-p.m_y);
+            if(s1 > s2){
+                cout << "The point is inside the circle." << endl; 
+            }
+            else if(s1 < s2){
+                cout << "The point is outside the circle." << endl; 
+            }
+            else{
+                cout << "The point is on the circle." << endl; 
+            }
         }
     private:
         Point m_p;
@@ -36,8 +43,9 @@ int main(){
     Point p(0, 0);
     int radiux = 3;
     Circle circle(p, radiux);
-    cout << "Circum: " << circle.circum() << endl;
-    cout << "Surface: " << circle.surface() << endl;
+
+    Point p2(2, 2);
+    circle.relation(p2);
 
     return 0;
 }
