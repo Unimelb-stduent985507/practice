@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 
-const int maxsize = 5;
+const int maxsize = 500;
 
 class circleQueue{
     public:
