@@ -46,13 +46,13 @@ int main(int argc,char *argv[])
     memset(buffer,0,sizeof(buffer));
     if ( (iret=recv(clientfd,buffer,sizeof(buffer),0))<=0) // 接收客户端的请求报文。
     {
-       printf("iret=%d\n",iret); break;  
+       printf("iret=%d\n",iret); break;
     }
     printf("接收：%s\n",buffer);
 
     if(buffer[0]=='b' && buffer[1]=='y' && buffer[2]=='e') break;
     gets(buffer);
-    if ( (iret=send(clientfd,buffer,strlen(buffer),0))<=0) // 向客户端发送响应结果。
+    if ((iret=send(clientfd,buffer,strlen(buffer),0))<=0) // 向客户端发送响应结果。
     { perror("send"); break; }
     printf("发送：%s\n",buffer);
   }
